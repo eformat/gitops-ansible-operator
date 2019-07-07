@@ -1,0 +1,8 @@
+apiVersion: eformat.me.gitops/v1alpha1
+kind: GitOps
+metadata:
+  name: example-gitops
+spec:
+  git_url: "https://github.com/eformat/openshift-cluster-config.git"
+  git_dir: "/tmp/openshift-cluster-config"
+  git_context_dir: "cluster-foo"

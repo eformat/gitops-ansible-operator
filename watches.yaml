@@ -1,0 +1,5 @@
+---
+- version: v1alpha1
+  group: eformat.me.gitops
+  kind: GitOps
+  playbook: /opt/ansible/playbook.yml

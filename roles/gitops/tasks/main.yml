@@ -1,0 +1,26 @@
+---
+# tasks file for gitops
+- name: clone repository
+  git: repo={{ git_url }}
+       dest={{ git_dir }}
+       accept_hostkey=yes
+       update=yes
+  register: gitclone
+
+- debug: "var=gitclone"
+
+- name: Add k8s config if changed
+  k8s:
+    state: 'present'
+    src: "{{ item }}"
+  when: "gitclone.changed == true"
+  with_fileglob:
+    - "{{ git_dir }}/{{ git_context_dir }}/present/*.yml"
+
+- name: Remove k8s config if changed
+  k8s:
+    state: 'absent'
+    src: "{{ item }}"
+  when: "gitclone.changed == true"
+  with_fileglob:
+    - "{{ git_dir }}/{{ git_context_dir }}/absent/*.yml"
