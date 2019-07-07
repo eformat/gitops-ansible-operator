@@ -13,7 +13,7 @@
   k8s:
     state: 'present'
     src: "{{ item }}"
-  when: "gitclone.changed == true"
+#  when: "gitclone.changed == true"
   with_fileglob:
     - "{{ git_dir }}/{{ git_context_dir }}/present/*.yml"
     - "{{ git_dir }}/{{ git_context_dir }}/present/*.yaml"
@@ -22,7 +22,7 @@
   k8s:
     state: 'absent'
     src: "{{ item }}"
-  when: "gitclone.changed == true"
+#  when: "gitclone.changed == true"
   with_fileglob:
     - "{{ git_dir }}/{{ git_context_dir }}/absent/*.yml"
     - "{{ git_dir }}/{{ git_context_dir }}/absent/*.yaml"
