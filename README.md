@@ -43,7 +43,7 @@ docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
 docker tag gitops-ansible-operator:latest ${HOST}/gitops-ansible-operator/gitops-ansible-operator:latest
 docker push ${HOST}/gitops-ansible-operator/gitops-ansible-operator:latest
 ```
-Create cluster poerator resources
+Create cluster operator resources
 ```
 oc create -f deploy/crds/eformat_v1alpha1_gitops_crd.yaml
 oc create -f deploy/service_account.yaml
